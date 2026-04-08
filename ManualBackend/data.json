@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1774472982104,
+      "name": "Rahul kumar",
+      "email": "rahul@gmail.com",
+      "password": ""
+    },
+    {
+      "id": 1774473148006,
+      "name": "Rajat Saini",
+      "email": "rajat@gamil.com",
+      "password": "r@j@tS@ini90"
+    },
+    {
+      "id": 1774473362827,
+      "name": "Ritik",
+      "email": "ritik@gmail.com",
+      "password": "ritiksaini@123"
+    }
+  ]
+}
