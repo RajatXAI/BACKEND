@@ -1,7 +1,6 @@
 const postModel = require("../models/post.model");
 const ImageKit= require('@imagekit/nodejs');
-const {toFile} = require("@imagekit/nodejs")
-const jwt = require("jsonwebtoken"); 
+const {toFile} = require("@imagekit/nodejs"); 
 const { verify } = require("node:crypto");
 
 const imagekit = new ImageKit({
