@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // require the mongoose library 
 
-const postsSchema = new mongoose.Schema({
+const postsSchema = new mongoose.Schema({ // create a post schema using mongoose.Schema() 
 
     caption:{
         type: String,
@@ -17,6 +17,6 @@ const postsSchema = new mongoose.Schema({
     }
 })
 
-const postModel = mongoose.model("post", postsSchema);
+const postModel = mongoose.model("post", postsSchema); 
 
-module.exports = postModel
+module.exports = postModel // export the post model using mongoose.model() 

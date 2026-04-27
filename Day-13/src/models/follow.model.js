@@ -1,16 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // require the mongoose library 
 
-const followSchema = new mongoose.Schema({
+const followSchema = new mongoose.Schema({ // create a follow schema using mongoose.Schema() 
 
     follower:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: [true, "Follower is required"]
+        type: String,
     },
-    followe:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users", 
-        require: [true, "Follow is required"]
+    follow:{
+        type: String,
     },
 
 }, {
@@ -18,6 +14,13 @@ const followSchema = new mongoose.Schema({
     timestamps: true
 })
 
+followSchema.index(
+    
+    { follower: 1, follow: 1,},
+    { unique: true}
+
+)
+
 const followModel = mongoose.model("follows", followSchema);
 
-module.exports = followModel;      
+module.exports = followModel;      // export the follow model using mongoose.model() 

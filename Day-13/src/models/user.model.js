@@ -1,10 +1,10 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose") // require the mongoose library 
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({ // create a user schema using mongoose.Schema() 
 
     username :{
 
-        type: String,
+        type: String, 
         unique: [true,"User name already exists"],
         required: [true, "User name is required"]
     },
@@ -36,5 +36,5 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("User", UserSchema)
+module.exports = mongoose.model("User", UserSchema) // export the user model using mongoose.model() 
 

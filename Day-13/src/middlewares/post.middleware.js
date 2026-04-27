@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); // require the jsonwebtoken library 
 
-async function identifyUser(req, res, next) {
+async function identifyUser(req, res, next) { // create a function to identify the user using the token 
 
   const token = req.cookies.token;
   let decoded = null;
@@ -20,7 +20,7 @@ async function identifyUser(req, res, next) {
   }
 
   req.user = decoded
-  next();
+  next(); // call the next middleware 
 }
 
 module.exports = identifyUser;  
