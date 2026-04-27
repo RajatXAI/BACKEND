@@ -56,7 +56,7 @@ async function getPostDetailController(req, res){
 
     if(!post){
 
-        return res.status(404).josn({
+        return res.status(404).json({
 
             message: "Post not found"
         })
