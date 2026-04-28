@@ -28,4 +28,6 @@ followRoute.post("/unfollow/:username", identifyUser, followController.unfollowU
 
 
 
+followRoute.patch("/status/:username", identifyUser, followController.statusUserController)
+
 module.exports = followRoute

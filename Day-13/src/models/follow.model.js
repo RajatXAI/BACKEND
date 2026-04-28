@@ -8,6 +8,14 @@ const followSchema = new mongoose.Schema({ // create a follow schema using mongo
     follow:{
         type: String,
     },
+    status:{
+        type: String,
+        default: "pending",
+        enum:{
+            values : ["pending", "accepted", "rejected"],
+            message: "status can only be pending, accepted, rejected"
+        }
+    }
 
 }, {
 

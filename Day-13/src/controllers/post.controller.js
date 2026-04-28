@@ -95,7 +95,8 @@ async function likePostController(req, res){
 
     res.status(201).json({
         message: "Post liked successfully",
-        like
+        like,
+        
     })
 
 }

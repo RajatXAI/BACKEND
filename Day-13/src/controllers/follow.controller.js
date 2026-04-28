@@ -1,4 +1,5 @@
 const followModel = require("../models/follow.model");
+const userModel = require("../models/user.model")
 
 
 
@@ -30,18 +31,16 @@ async function followUserController(req, res){
         })
     }
 
-    const isFollowExists = await followModel.findOne({
+    const isUserExists = await userModel.findOne({
 
-        username : followUserName
-    })
-
-    if(!isFollowExists){
-
-        return res.status(404).json({
-
-            message: `User you are trying to follow ${followUserName} does not exist`
-        })
-    }
+       username: followUserName
+    });
+  
+    if (!isUserExists) {
+      return res.status(404).json({
+          message: `User you are trying to follow ${followUserName} does not exist`
+      });
+     }
 
     const followRecord = await followModel.create({
 
@@ -89,9 +88,52 @@ async function unfollowUserController(req, res) {
   }
 }
 
+async function statusUserController(req, res) {
+  try {
+    const currentUser = req.user.username;       // jisne login kiya
+    const requesterUser = req.params.username;  // jisne request bheji
+    const status  = req.body?.status;
+
+    // valid status check
+    if (status !== "accepted" && status !== "rejected") {
+      return res.status(400).json({
+        message: "Status must be accepted or rejected"
+      });
+    }
+
+    // request find karo
+    const followRequest = await followModel.findOne({
+      follower: requesterUser,
+      follow: currentUser,
+    });
+
+    if (!followRequest) {
+      return res.status(404).json({
+        message: "Pending follow request not found"
+      });
+    }
+
+    // update status
+    followRequest.status = status;
+    await followRequest.save();
+
+    res.status(200).json({
+      message: `Follow request ${status}`,
+      follow: followRequest
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+}
+
+
 
 module.exports = {
 
     followUserController,
-    unfollowUserController
+    unfollowUserController,
+    statusUserController
 }
