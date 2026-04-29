@@ -1,12 +1,16 @@
 import {RouterProvider} from 'react-router';
 import {routes} from "./routes.jsx"
 import "./style.scss"
+import {AuthProvider} from './features/auth/auth.context.jsx'
 
 function App(){
 
   return(
     
-    <RouterProvider router={routes}/>
+    <AuthProvider>
+      <RouterProvider router={routes}/>
+    </AuthProvider>
+    
   )
 }
 
